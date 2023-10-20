@@ -24,16 +24,12 @@ def calc_difference(tag1, monat1, jahr1, tag2, monat2, jahr2):
     for i in range(monat1, 13):
         days += days_per_month(i, jahr1)
     days -= tag1
-    if jahr1 == jahr2:
-        for j in range(monat2, 13):
-            days -= days_per_month(j, jahr2)
-        days += tag2
-    else:
+    if jahr1 != jahr2:
         for j in range(jahr1 +1, jahr2 +1):
             days += 365 + is_schaltjahr(j)
-        for k in range(monat2, 13):
-            days -= days_per_month(k, jahr2)
-        days += tag2
+    for k in range(monat2, 13):
+        days -= days_per_month(k, jahr2)
+    days += tag2
     return days
         
 
